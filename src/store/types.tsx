@@ -5,7 +5,7 @@
 export interface IState {
   list: Array<IEpisode>
   error: null | string
-  favorites: Array<any>
+  favorites: Array<IEpisode>
 }
 
 export interface IAction {

@@ -1,20 +1,29 @@
-import { EpisodeProvider } from './context/EpisodeContext';
+import { EpisodeProvider, useEpisode } from './context/EpisodeContext';
 import './App.css';
-import Episodes from './components/Episodes';
+import EpisodesList from './components/EpisodesList';
 
 function App(): JSX.Element {
+  const {
+    episode: { favorites },
+  } = useEpisode();
   return (
     <div className='App'>
       <header>
         <h1>Rich and Morty</h1>
         <p>Select your favorites</p>
+        <div className='header__favorite-number'>
+          Favorite(s) : {favorites.length}
+        </div>
       </header>
-
-      <EpisodeProvider>
-        <Episodes />
-      </EpisodeProvider>
+      <EpisodesList />
     </div>
   );
 }
 
-export default App;
+export const WithProvider: React.FC = () => {
+  return (
+    <EpisodeProvider>
+      <App />
+    </EpisodeProvider>
+  );
+};

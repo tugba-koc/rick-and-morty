@@ -4,10 +4,10 @@ import * as ACTION_TYPES from '../store/actions/action_type';
 import EpisodeItem from './EpisodeItem';
 import {IEpisode} from "../store/types"
 
-const Episodes: React.FC = () => {
+const EpisodesList: React.FC = () => {
   const {
     episodeDispatch,
-    episode: { list },
+    episode: { list, favorites },
   } = useEpisode();
   const fetchData = async () => {
     let res = await fetch(
@@ -24,13 +24,32 @@ const Episodes: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const toggleFavAction = (episode: IEpisode) => {
+    const isInFavList = favorites.includes(episode);
+    let dispatchObj = {
+      type: ACTION_TYPES.ADD_FAVORITE,
+      payload: episode,
+    };
+    if (isInFavList) {
+      const filteredFavList = favorites.filter(
+        (fav: IEpisode) => fav.id !== episode.id
+      );
+      episodeDispatch({
+        type: ACTION_TYPES.REMOVE_FAVORITE,
+        payload: filteredFavList,
+      });
+    } else {
+      episodeDispatch(dispatchObj);
+    }
+  };
+
   return (
     <div className='episodes'>
       {list.map((episode: IEpisode) => (
-        <EpisodeItem episode={episode} key={episode.id} />
+        <EpisodeItem toggleFavAction={toggleFavAction} episode={episode} key={episode.id} />
       ))}
     </div>
   );
 };
 
-export default Episodes;
+export default EpisodesList;

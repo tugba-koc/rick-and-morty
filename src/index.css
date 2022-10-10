@@ -41,3 +41,15 @@ button {
   border: none;
   cursor: pointer;
 }
+
+.header__favorite-number {
+  font-weight: 600;
+}
+
+.clicked {
+  background-color: rgba(171, 171, 171, 0.705);
+}
+
+button:active {
+  background-color: rgba(255, 12, 214, 0.896);
+}
