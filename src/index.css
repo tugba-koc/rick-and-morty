@@ -11,3 +11,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+header > p {
+  font-style: italic;
+}
+
+.episodes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.episode__item {
+  width: 300px;
+  padding-left: 10px;
+  height: 530px;
+}
+
+button {
+  border-radius: 5px;
+  padding: 10px 16px;
+  background-color: rgba(255, 12, 214, 0.544);
+  color: white;
+  border: none;
+  cursor: pointer;
+}

@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import {
   episodeReducer,
-  episodeInitialState
+  episodeInitialState,
 } from '../store/reducer/episodeReducer';
 import { IState, IAction } from '../store/types';
 

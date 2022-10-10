@@ -1,14 +1,17 @@
-import './App.css';
-import Test from './components/Test';
 import { EpisodeProvider } from './context/EpisodeContext';
+import './App.css';
+import Episodes from './components/Episodes';
 
 function App(): JSX.Element {
   return (
     <div className='App'>
-      <h1>Rich and Morty</h1>
-      <p>Select your favorites</p>
+      <header>
+        <h1>Rich and Morty</h1>
+        <p>Select your favorites</p>
+      </header>
+
       <EpisodeProvider>
-        <Test/>
+        <Episodes />
       </EpisodeProvider>
     </div>
   );
